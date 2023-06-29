@@ -66,6 +66,11 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => setShowAlert({ show: false }), 2000);
+    return () => clearTimeout(timer);
+  }, [showAlert]);
+
   return (
     <div className='center'>
       {showAlert.show && <Alert type={showAlert.type} msg={showAlert.msg} />}
